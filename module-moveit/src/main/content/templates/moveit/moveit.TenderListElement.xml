@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template-definition version="1.0" xmlns="http://www.polopoly.com/polopoly/cm/app/xml">
+  <input-template name="moveit.TenderListElement" label="Tender List Element">
+    <policy>com.atex.plugins.baseline.policy.BaselinePolicy</policy>
+    <editor>com.polopoly.cm.app.widget.OAjaxTopPolicyWidget</editor>
+    <viewer>com.polopoly.cm.app.widget.OAjaxTopPolicyWidget</viewer>
+    <editor contextName="orchid_TOCENTRY">com.atex.plugins.baseline.widget.OContentListEntryBasePolicyWidget</editor>
+    <viewer contextName="orchid_TOCENTRY">com.atex.plugins.baseline.widget.OContentListEntryBasePolicyWidget</viewer>
+
+    <type>LayoutElement</type>
+    
+    <param name="enableAutosave">true</param>
+    <param name="templateIcon">document_text.png</param>
+    <param name="renderTemplateIconInSelect">true</param>
+
+    <field name="name" input-template="p.ContentName" label="cm.label.Title" required="true" />
+
+    <output-templates mode="www">
+      <id>moveit.TenderListElement.ot</id>
+    </output-templates>
+  </input-template>
+  <output-template name="moveit.TenderListElement.ot" input-template="p.siteengine.ElementOutputTemplate">
+    <content-xml>
+      <component group="output/modelKeyMode" name="selected">no-cache</component>
+      <contentref group="output/renderer" name="selected">
+        <contentid>
+          <externalid>p.siteengine.VelocityFileRenderer</externalid>
+        </contentid>
+      </contentref>
+      <contentref group="output/controller" name="selected">
+        <contentid>
+          <externalid>p.siteengine.JavaClassRenderController</externalid>
+        </contentid>
+      </contentref>
+      <component group="output/controller/selected/renderControllerClass" name="value">se.moveit.RenderControllerTenderListElement</component>
+      <component group="output/renderer/selected/defaultVelocityViewFileName" name="value">/WEB-INF/velocity/moveit.TenderListElement.vm</component>
+      <component group="preview/controller" name="value">com.polopoly.siteengine.preview.PreviewControllerStandard</component>
+    </content-xml>
+  </output-template>
+</template-definition>

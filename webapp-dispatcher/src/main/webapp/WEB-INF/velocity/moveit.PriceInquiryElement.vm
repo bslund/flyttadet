@@ -1,0 +1,5 @@
+#if($tender)
+    #parse("/WEB-INF/velocity/priceinquiry/moveit.PriceInquiryElement.tender.vm")
+#else
+    #parse("/WEB-INF/velocity/priceinquiry/moveit.PriceInquiryElement.form.vm")
+#end

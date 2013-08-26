@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch xmlns="http://www.polopoly.com/polopoly/cm/xmlio">
+  <!-- Global content creator -->
+  <content>
+    <metadata>
+      <contentid>
+        <externalid>p.ArticleTemplates</externalid>
+      </contentid>
+    </metadata>
+    <contentlist mode="reset">
+      <entry mode="modify" withMetadata="false">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <major>InputTemplate</major>
+              <externalid>moveit.Tender</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+    </contentlist>
+  </content>
+  
+  <content updateIfExists="false">
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.AvailableTemplateRepository</externalid>
+      </contentid>
+    </metadata>
+  </content>
+  
+  <content updateIfExists="false">
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.DefaultTemplateRepository</externalid>
+      </contentid>
+    </metadata>
+  </content>  
+  
+  <!-- Quick Create Repositories -->
+  <content>
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.AvailableContentTemplates</externalid>
+      </contentid>
+      <input-template>
+        <externalid>p.TemplateCategory</externalid>
+      </input-template>
+      <security-parent>
+        <externalid>p.QuickCreate.AvailableTemplateRepository</externalid>
+      </security-parent>
+    </metadata>
+    <component name="name" group="polopoly.Content">Article</component>
+    <component name="categoryMajor" group="polopoly.Client">Article</component>
+    <contentlist mode="reset">
+      <!--entry mode="modify">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>moveit.PriceInquiryElement</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry-->
+    </contentlist>
+  </content>
+  <content>
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.AvailableTemplateRepository</externalid>
+      </contentid>
+      <input-template>
+        <externalid>p.TemplateRoot</externalid>
+      </input-template>
+      <security-parent>
+        <externalid>p.sitengine.ContentCreatorTemplates.d</externalid>
+      </security-parent>
+    </metadata>
+    <contentlist>
+      <entry mode="modify">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>p.QuickCreate.AvailableContentTemplates</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+    </contentlist>
+  </content>
+  <content>
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.DefaultContentTemplates</externalid>
+      </contentid>
+      <input-template>
+        <externalid>p.TemplateCategory</externalid>
+      </input-template>
+      <security-parent>
+        <externalid>p.QuickCreate.DefaultTemplateRepository</externalid>
+      </security-parent>
+    </metadata>
+    <component name="name" group="polopoly.Content">Article</component>
+    <component name="categoryMajor" group="polopoly.Client">Article</component>
+    <contentlist mode="reset">
+      <!--entry mode="modify">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>moveit.PriceInquiryElement</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry-->
+    </contentlist>
+  </content>
+  <content>
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.QuickCreate.DefaultTemplateRepository</externalid>
+      </contentid>
+      <input-template>
+        <externalid>p.TemplateRoot</externalid>
+      </input-template>
+      <security-parent>
+        <externalid>p.sitengine.ContentCreatorTemplates.d</externalid>
+      </security-parent>
+    </metadata>
+    <contentlist>
+      <entry mode="modify">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>p.QuickCreate.DefaultContentTemplates</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+    </contentlist>
+  </content>
+  
+  <!-- Element content creator -->
+  <content>
+    <metadata>
+      <contentid>
+        <major>Department</major>
+        <externalid>p.siteengine.ElementLayoutTemplates.d</externalid>
+      </contentid>
+      <input-template>
+        <externalid>p.TemplateCategory</externalid>
+      </input-template>
+      <security-parent>
+        <externalid>p.siteengine.StructureTemplates.d</externalid>
+      </security-parent>
+    </metadata>
+    <contentlist>
+      <entry mode="modify" withMetadata="false">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>moveit.PriceInquiryElement</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+      <entry mode="modify" withMetadata="false">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>moveit.TenderListElement</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+      <entry mode="modify" withMetadata="false">
+        <metadata>
+          <referredContent>
+            <contentid>
+              <externalid>example.LoginElement</externalid>
+            </contentid>
+          </referredContent>
+        </metadata>
+      </entry>
+     </contentlist>
+  </content>
+</batch>

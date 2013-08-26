@@ -1,0 +1,37 @@
+<div class="article">
+    <h1>Begär offert</h1>
+
+    <form method="post" action="/offert">
+        <div class="field">
+            <label class="" for="inputFrom">Från</label>
+            <input size="42" type="text" id="inputFrom" name="inputFrom" placeholder="Från">
+        </div>
+        <div class="field">
+            <label class="" for="inputTo">Till</label>
+            <input size="42" type="text" id="inputTo" name="inputTo" placeholder="Till">
+        </div>
+        <div class="field">
+            <label class="required" for="inputDistance">Avstånd (km) <span class="required">*</span></label>
+            <input type="number" class="span3" id="inputDistance" name="inputDistance" placeholder="Avstånd (km)">
+        </div>
+        <div class="field">
+            <label class="required" for="inputHouseArea">Bostadens yta (kvm) <span class="required">*</span></label>
+            <input type="number" id="inputHouseArea" name="inputHouseArea" placeholder="Bostadens yta (kvm)">
+        </div>
+        <div class="field">
+            <label class="required" for="inputOtherArea">Vind- och källaryta (kvm) <span class="required">*</span></label>
+            <input type="number" id="inputOtherArea" name="inputOtherArea" placeholder="Vind- och källaryta (kvm)">
+        </div>
+        <div class="field">
+            <label class="" for="inputPiano">Pianolyft</label>
+            <input type="checkbox" id="inputPiano" name="inputPiano">
+        </div>
+        <div class="field">
+            <label class="" for="inputPackaging">Packhjälp</label>
+            <input type="checkbox" id="inputPackaging" name="inputPackaging">
+        </div>
+        <div class="button-set">
+          <input class="button submit" type="submit" value="Skicka" id="submitRegister" />
+        </div>
+    </form>
+</div>

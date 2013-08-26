@@ -1,0 +1,3 @@
+id:p.GlobalSiteDepartment
+major:department
+ref:domains:http\://localhost\:8080:moveit.d

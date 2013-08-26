@@ -1,0 +1,43 @@
+#macro(answerYesOrNo $isChecked)
+    #if($isChecked)
+        Ja
+    #else
+        Nej
+    #end
+#end
+
+<div class="article element">
+    <h1>Prisförslag för bohagsflytt</h1>
+
+    <div class="container twoColumns">
+        <div class="col1">
+            <p>Offertnummer: $!tender.tenderId.value</p>
+            <p>$!fullName</p>
+            <p>$!email</p>
+            <br>
+            <p>Från: $!tender.fromAddress.value</p>
+            <p>Till: $!tender.toAddress.value</p>
+            <p>Avstånd: $!tender.distance.value km</p>
+            <br>
+            <p>Bostadens yta: $!tender.houseArea.value kvm</p>
+            <p>Vind/Källare: $!tender.otherArea.value kvm</p>
+            <br>
+            <p>Övrigt</p>
+            <p>Pianolyft: #answerYesOrNo($!tender.piano.checked)</p>
+            <p>Packhjälp: #answerYesOrNo($!tender.packaging.checked)</p>
+        </div>
+        <div class="col2">
+            <h2>Uppskattat pris: $!tender.price.value kr inkl moms</h2>
+            <br>
+            <p>
+                Vi sparar ditt prisförslag i 90 dagar.
+                För att se prisförslaget igen, besök:
+                <a href="/offert/$!tender.tenderId.value">http://www.moveit.se/offert/$!tender.tenderId.value</a>
+            </p>
+            <br>
+            <p>
+                Om du har frågor, kontakta <a href="mailto:flytt@moveit.se">flytt@moveit.se</a>.
+            </p>
+        </div>
+    </div>
+</div>

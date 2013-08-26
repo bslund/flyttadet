@@ -1,0 +1,15 @@
+tmp
+work
+*target
+*.iml
+rebel.xml
+.project
+.classpath
+*.zip
+velocity.log
+bin
+*.DS_Store
+java_pid*
+contentcache
+filescache
+idea/

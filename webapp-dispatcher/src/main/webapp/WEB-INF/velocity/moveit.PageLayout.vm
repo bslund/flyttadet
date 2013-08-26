@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <title>MoveIT</title>
+        
+        <link rel="stylesheet" type="text/css" href="/css/commons/reset.css">
+        <link rel="stylesheet" type="text/css" href="/css/commons/layout.css">
+        <link rel="stylesheet" type="text/css" href="/css/greenfield/twocol.css">
+        <link rel="stylesheet" type="text/css" href="/css/greenfield/ui_green.css">
+        <link rel="stylesheet" type="text/css" href="/css/greenfield/membership.css">
+        
+        <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+        
+        ## Generic polopoly stuff (uses jQuery)
+        <script type="text/javascript" src="/js/jquery.polopoly.js"></script>
+        
+        ## Membership (uses jQuery)
+        <script type="text/javascript" src="/js/jquery.validate-1.9.0.min.js"></script>
+        <script type="text/javascript" src="/js/membership.js"></script>
+        
+        <script type="text/javascript">
+            <!--
+            jQuery(document).ready(function() {
+                window.pageLoaded=true
+            });
+            //-->
+        </script>
+    </head>
+    <body>
+        <div class="borderLayout">
+            <div class="borderLayoutColumn" id="col3">
+                ## Render article (or other type of content after most specific page, 
+                ## like e.g. an element) if present in path
+                #set ($displayArticle = $m.context.page.pathAfterPage.size() > 0)
+                #if ($displayArticle)
+                    #render({"content": $m.context.page.pathAfterPage.get(0), "params":{"view":"article"}, "":""})
+                #else
+                    #render({"content": $content.main, "":""})
+                #end
+            </div>
+            <div class="borderLayoutColumn" id="col4">
+                #if($content.right)
+                  #render({"content": $content.right, "":""})
+                #end
+            </div>
+        </div>
+    </body>
+</html>

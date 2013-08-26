@@ -1,0 +1,10 @@
+#if($isLoggedIn && !$tenderList.empty)
+    <div class="article elementBorder lightBlock">
+        <strong>Mina offerter</strong>
+        <ul>
+            #foreach($tender in $tenderList)
+                <li><a href="#link({"path": $tender.parentIds, "":""})">offert/$!tender.tenderId.value</a></li>
+            #end
+        </ul>
+    </div>
+#end

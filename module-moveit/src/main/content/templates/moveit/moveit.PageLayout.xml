@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template-definition version="1.0" xmlns="http://www.polopoly.com/polopoly/cm/app/xml">
+  <input-template name="moveit.PageLayout">
+    <content-xml>
+      <component group="polopoly.Content" name="name">MoveIT page layout</component>
+    </content-xml>
+    <policy>com.polopoly.siteengine.standard.content.ContentBasePolicy</policy>
+    <editor>com.polopoly.cm.app.widget.OTopPolicyWidget</editor>
+    <viewer>com.polopoly.cm.app.widget.OTopPolicyWidget</viewer>
+    
+    <layout name="maincols" input-template="p.ColumnHolder">
+      <layout name="maincol" input-template="p.Column">
+        <layout name="mainsec" input-template="p.LabeledSection" label="cm.template.example.DefaultPageLayout.MainColumn">
+          <field name="main" input-template="p.siteengine.layout.Slot.it">
+            <param name="defaultInheritSetting">true</param>
+            <param name="displayInheritSetting">false</param>
+           </field>
+        </layout>
+      </layout>
+      <layout name="rightcol" input-template="p.Column">
+        <layout name="rightsec" input-template="p.LabeledSection" label="cm.template.example.DefaultPageLayout.RightColumn">
+          <field name="right" input-template="p.siteengine.layout.Slot.it">
+            <param name="defaultInheritSetting">true</param>
+            <param name="displayInheritSetting">false</param>
+          </field>
+        </layout>
+      </layout>
+    </layout>
+
+    <output-templates mode="www">
+      <id>moveit.PageLayout.ot</id>
+    </output-templates>
+  </input-template>
+  <output-template name="moveit.PageLayout.ot" input-template="p.siteengine.PageLayoutOutputTemplate">
+    <content-xml>
+      <component group="polopoly.Content" name="name">MoveIT page layout</component>
+      <component group="output/modelKeyMode" name="selected">no-cache</component>
+      <contentref group="output/renderer" name="selected">
+        <contentid>
+          <externalid>p.siteengine.VelocityFileRenderer</externalid>
+        </contentid>
+      </contentref>
+      <component group="output/renderer/selected/defaultVelocityViewFileName" name="value">/WEB-INF/velocity/moveit.PageLayout.vm</component>
+      <component group="output/controller/selected/renderControllerClass" name="value">example.content.RenderControllerExtended</component>
+    </content-xml>
+  </output-template>
+</template-definition>

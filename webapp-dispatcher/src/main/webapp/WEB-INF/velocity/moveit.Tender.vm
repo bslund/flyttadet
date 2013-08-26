@@ -1,0 +1,1 @@
+#render({"content": "moveit.priceInquiry.element", "params": {"tender": $content, "": ""}})

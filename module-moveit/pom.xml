@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>moveit - moveit Module</name>
+
+  <artifactId>module-moveit</artifactId>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>se.moveit</groupId>
+    <artifactId>top</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.polopoly</groupId>
+      <artifactId>polopoly</artifactId>
+      <version>${polopoly.version}</version>
+      <classifier>api</classifier>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.polopoly</groupId>
+      <artifactId>polopoly</artifactId>
+      <version>${polopoly.version}</version>
+      <scope>runtime</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.polopoly</groupId>
+      <artifactId>legacy-site-plugin</artifactId>
+      <version>${polopoly.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.atex.plugins</groupId>
+      <artifactId>baseline</artifactId>
+      <version>${baseline.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.polopoly</groupId>
+      <artifactId>inbox-control</artifactId>
+      <version>${polopoly.version}</version>
+      <classifier>activate-contentdata</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    
+    <!-- 3rd party dependencies -->
+    <dependency>
+      <groupId>com.octo.captcha</groupId>
+      <artifactId>jcaptcha-all</artifactId>
+      <version>1.0-RC6</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-email</artifactId>
+      <version>1.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    <!-- "invisible" runtime dependencies for velocity-tools -->
+    <dependency>
+      <groupId>commons-digester</groupId>
+      <artifactId>commons-digester</artifactId>
+      <version>1.8</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>oro</groupId>
+      <artifactId>oro</artifactId>
+      <version>2.0.8</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- End velocity-tools dependencies -->
+    
+    <!-- test -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-ejb_2.1_spec</artifactId>
+      <version>1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Make the concurrent dependency excplicit so that we can remove it from the jboss container libs -->
+    <dependency>
+      <groupId>concurrent</groupId>
+      <artifactId>concurrent</artifactId>
+      <version>1.3.4</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.polopoly.extensions</groupId>
+        <artifactId>p-maven-plugin</artifactId>
+        <version>${polopoly.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>dot-content-to-xml</goal>
+              <goal>pack</goal>
+            </goals>
+            <configuration>
+
+              <!-- list of folders with .content files to be consumed by the dot-content-to-xml goal -->
+              <sources>
+                <source>
+                  <directory>${project.basedir}/src/main/content</directory>
+                  <includes>
+                    <include>*.content</include>
+                    <include>**/*.content</include>
+                  </includes>
+                </source>
+              </sources>
+              <contentDataFileResources>
+                <contentDataFileResource>
+                  <directory>${project.basedir}/src/main/content</directory>
+                  <includes>
+                    <include>*</include>
+                    <include>**/*</include>
+                  </includes>
+                  <excludes>
+                    <exclude>*.content</exclude>
+                    <exclude>**/*.content</exclude>
+                    <exclude>*.xml</exclude>
+                    <exclude>**/*.xml</exclude>
+                  </excludes>
+                </contentDataFileResource>
+              </contentDataFileResources>
+
+              <!-- list of folder from where to get content xml (default values)-->
+              <contentDataXmlResources>
+                <contentDataXmlResource>
+                  <directory>${project.basedir}/src/main/content</directory>
+                  <includes>
+                    <include>*.xml</include>
+                    <include>**/*.xml</include>
+                  </includes>
+                </contentDataXmlResource>
+
+                <contentDataXmlResource>
+                  <!-- the dotcontent maven goal converts .content files into content XML
+                       that ends up in this directory -->
+                  <directory>${project.build.directory}/generated-content</directory>
+                  <includes>
+                    <include>*.xml</include>
+                    <include>**/*.xml</include>
+                  </includes>
+                </contentDataXmlResource>
+              </contentDataXmlResources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.polopoly.extensions</groupId>
+                    <artifactId>p-maven-plugin</artifactId>
+                    <versionRange>[10.8.0,)</versionRange>
+                    <goals>
+                      <goal>dot-content-to-xml</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
